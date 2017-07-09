@@ -21,6 +21,7 @@ $('#toDoHolder .pep').pep({
 var toDoRecords = [];
 
 $(document).ready(function(){
+  $('body').addClass('test');
  if(localStorage.getItem('dragToDoRecs')){  
   toDoRecords = JSON.parse(localStorage.getItem('dragToDoRecs'));
  }
