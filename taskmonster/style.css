@@ -1,0 +1,118 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+}
+#template .pep {
+  display: none;
+}
+.pep {
+  position: absolute;
+  width: 80px;
+  height:80px;
+  top: 50%;
+  left:50%;
+  -webkit-transform: translate(-20%,-50%);
+  transform: translate(-20%,-50%);
+}
+.pep .mbody {
+  fill: lightgreen;
+}
+.pep .name {
+  opacity: 0;
+  min-width: 80px;
+  background: #666;
+  position: absolute;
+  color: white;
+  padding: 5px;
+  top: -45px;
+  left: -0px;
+  text-align: center;
+  -ms-transform: skewX(10deg); /* IE 9 */
+  -webkit-transform: skewX(10deg); /* Safari */
+  transform: skewX(10deg); /* Standard syntax */
+}
+.pep .name:after {
+  content: "";
+  width: 0px;
+  float: left;
+  display: inline-block;
+  border-top: 10px #666 solid;
+  border-left: 10px transparent solid;
+  border-right: 3px transparent solid;
+  position: relative;
+  top: 37px;
+  margin-top:-15px; 
+}
+.pep:active .mbody {
+  fill: green;
+}
+.pep:active .name {
+  opacity: 1;
+}
+
+#input {
+  width: 100%;
+    position: fixed;
+  z-index: 2;
+  background: lightBlue;
+  bottom: 0;
+  padding: 10px;
+  cursor: pointer;
+}
+button {
+  cursor: pointer;
+}
+
+.slide {
+  animation: slide 4s infinite;
+  transform-origin:bottom;  
+}
+.wobble {
+  animation: wobble 4s infinite;
+  transform-origin:bottom center;
+  animation-timing-function: linear;
+}
+.shape {
+  animation: breathe 1s infinite;
+  transform-origin:bottom;
+}
+
+@keyframes slide{
+  0%,100%{
+    animation-timing-function: linear
+  }
+  25%{
+    transform: translateX(4%);
+  }
+  75%{
+    transform: translateX(-4%);
+  }  
+}
+
+@keyframes wobble{
+  0%,100%{
+    transform:
+      rotate(0deg)
+  }
+  25%{
+    transform:
+      rotate(5deg)
+  }
+  75%{
+    transform:
+      rotate(-5deg)
+  }  
+}
+
+@keyframes breathe{
+  0%, 100%{
+    transform:
+      scaleY(1);
+  }
+  50%{
+    transform:
+      scaleY(.96)
+      scaleX(1.04)
+  }
+}

@@ -2,34 +2,48 @@
 <html>
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css">
-<script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
-<script src="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
-<script>
-$(document).on("pagecreate","#pageone",function(){
-  $("p").on("tap",function(){
-    $(this).hide();
-  });                       
-});
-</script>
+<link rel="stylesheet" href="style.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+
+<script type="text/javascript" src="https://rawgithub.com/briangonzalez/jquery.pep.js/master/src/jquery.pep.js"></script>
 </head>
 <body>
 
-<div data-role="page" id="pageone">
-  <div data-role="header">
-    <h1>The tap Event</h1>
-  </div>
 
-  <div data-role="main" class="ui-content">
-    <p>If you tap me, I will disappear.</p>
-    <p>Tap me away!</p>
-    <p>Tap me too!</p>
-  </div>
+<div id="template">
+<div class="pep">
+  <?xml version="1.0" encoding="utf-8"?>
+<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+   viewBox="0 0 300 300" style="enable-background:new 0 0 300 300;" xml:space="preserve">
+  <g class="slide">
+  <g class="wobble">
+<path class="mbody shape" d="M185.8,8l-10.4,49.3c0,0,15.6-5.2,28.6-15.6c13-10.4,0,28.6,0,28.6s36.3,20.8,41.5,0
+  c15.6,10.4-15.6,41.5-26,33.8c-10.4-7.8,13,23.4,46.7,7.8c18.2,23.4-31.2,41.5-31.2,41.5s7.8,15.6,36.3,13c13,18.2-31.2,26-31.2,26
+  s20.8,10.4,38.9,7.8c18.2-2.6-23.4,15.6-23.4,15.6l28.6,28.6c0,0-26,5.2-38.9,0c-13-5.2,10.4,15.6,10.4,15.6s-26,2.6-41.5-15.6
+  c-20.8,0,2.6,33.8,2.6,33.8l-33.8-18.2c0,0-13,15.6-7.8,28.6c5.2,13-20.8-31.2-20.8-31.2s-13,23.4-41.5,33.8
+  c18.2-72.7-28.6-18.2-41.5-18.2l7.8-38.9c0,0-46.7,18.2-62.3,0c20.8-2.6,23.4-10.4,41.5-18.2c33.8-10.4-31.2-5.2-41.5-31.2
+  c18.2,0,44.1-2.6,49.3-5.2S30,148.2,30,148.2s26-18.2,51.9-31.2s-13-5.2-23.4-10.4l18.2-10.4c0,0-10.4-5.2-10.4-31.2
+  c7.8,10.4,13,15.6,41.5,10.4c-13-15.6,0-38.9,0-38.9s7.8,26,18.2,31.2C136.4,72.9,110.5,28.8,185.8,8z"/>
+    
+<ellipse transform="matrix(0.9592 -0.2827 0.2827 0.9592 -31.8642 61.1569)" fill="#FFFFFF" cx="196" cy="141" rx="19" ry="21"/>
+<circle fill="#FFFFFF" cx="130" cy="141" r="34"/>
+<circle cx="191" cy="139" r="5"/>
+<circle cx="140" cy="134" r="5"/>
+<path d="M100,185h86c0,0,25,1,31,3s-106,0-106,0S105,188,100,185z"/>
+<polygon fill="#FFFFFF" points="199.5,188.9 191,200 186,188 "/>
+<polyline fill="#FFFFFF" points="133.2,199.2 125.9,187.4 140,188 "/>
+</g></g>
+</svg>
+  <span class="name">|boxx|</span>
+</div>
+</div>
+ <input type="text" placeholder="Enter todo" id="toDoItem" />
+<button onclick="myFunction()">click</button>
+<div id="toDoHolder">
 
-  <div data-role="footer">
-    <h1>Footer Text</h1>
-  </div>
-</div> 
+</div>
 
+
+<script src="main.js"></script>
 </body>
 </html>
