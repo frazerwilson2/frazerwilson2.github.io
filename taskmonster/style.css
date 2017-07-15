@@ -15,7 +15,7 @@ body {
   -webkit-transform: translate(-20%,-50%);
   transform: translate(-20%,-50%);
 }
-.pep .mbody {
+.mbody {
   fill: lightgreen;
 }
 .pep .name {
@@ -51,17 +51,27 @@ body {
   opacity: 1;
 }
 
-#input {
-  width: 100%;
-    position: fixed;
-  z-index: 2;
-  background: lightBlue;
-  bottom: 0;
-  padding: 10px;
-  cursor: pointer;
+.new-form {
+  background: #5dabd4;
+  padding: 1%;
 }
-button {
-  cursor: pointer;
+
+.new-form input {    
+    width: calc(100% - 50px);
+    padding: 5px;
+    border: none;
+    border-radius: 10px;
+}
+
+.new-form button {
+    cursor: pointer;
+    width: 30px;
+    padding: 0;
+    height: 30px;
+    border-radius: 100%;
+    border: none;
+    background: white;
+    text-align: center;
 }
 
 .slide {
@@ -116,3 +126,14 @@ button {
       scaleX(1.04)
   }
 }
+
+.extra {fill:#16a085;}
+.minny {fill:#2ecc71;}
+.spike {fill:#2980b9;}
+.lou {fill:#9b59b6;}
+.other {fill:#34495e;}
+.thingy {fill:#e67e22;}
+.magic {fill:#f39c12;}
+.crystal {fill:#d35400;}
+.arou {fill:#4DD0E1;}
+.zen {fill:#7986CB;}
