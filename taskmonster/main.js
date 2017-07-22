@@ -2,6 +2,8 @@
 var colors = ['extra', 'minny', 'spike', 'lou', 'other', 'thingy', 'magic', 'crystal', 'arou', 'zen', 'panda'];
 var colorLen = colors.length;
 var toDoRecords = [];
+var monstLen = $('#template .pep').length;
+var anims = 4;
 
 function setPeps() {
   $('#toDoHolder .pep').pep({
@@ -32,7 +34,9 @@ function addNewItem() {
   var chosenClr = colors[Math.round(Math.random() * colorLen)];
   var newLeft = $(window).width() / 2 + randomPos();
   var newTop = $(window).height() / 2 + randomPos();
-  var newToDoObj = { id: newId, name: inputVal, type: 1, left: newLeft, top: newTop, colour: chosenClr };
+  var chosenMonst = Math.ceil(Math.random() * monstLen);
+  console.log(chosenMonst);
+  var newToDoObj = { id: newId, name: inputVal, type: chosenMonst, left: newLeft, top: newTop, colour: chosenClr };
   if (!toDoRecords) {
     toDoRecords = [newToDoObj];
   }
@@ -64,7 +68,8 @@ function setToDoPos(pos, id) {
 
 function removeToDo(id) {
   for (var i = 0; i < toDoRecords.length; i++) {
-    if (toDoRecords[i].id === id) {
+    console.log(toDoRecords[i].id, id);
+    if (toDoRecords[i].id === parseInt(id)) {
       toDoRecords.splice(i, 1);
     }
   }
@@ -76,9 +81,11 @@ function randomPos() {
 }
 
 function buildToDoMonster(item) {
-  var newToDo = $("#template .pep").clone();
+  var newToDo = $("#template").find('#monst' + item.type).clone();
+  console.log($(newToDo).children('.name').html());
+  var randomSpeed = Math.ceil(Math.random() * anims);
   newToDo.children('.name').html(item.name);
-  $(newToDo).attr('id', item.id);
+  $(newToDo).attr('id', item.id).addClass('delay-' + randomSpeed);
   $(newToDo).find('.mbody').addClass(item.colour);
   newToDo.appendTo($('#toDoHolder'));
   newToDo.css({ top: item.top, left: item.left });

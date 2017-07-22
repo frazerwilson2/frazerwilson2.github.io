@@ -4,7 +4,7 @@ body {
   font-family: Arial, sans-serif;
 }
 #template .pep {
-  /*display: none;*/
+  display: none;
 }
 .pep {
   position: absolute;
@@ -12,6 +12,7 @@ body {
   height:80px;
   top: 50%;
   left:50%;
+  z-index: 1;
   -webkit-transform: translate(-20%,-50%);
   transform: translate(-20%,-50%);
 }
@@ -47,7 +48,12 @@ body {
 .pep:active .mbody {
   fill: green;
 }
-.pep:active .name {
+
+.pep:hover {
+  z-index: 10;
+}
+
+.pep:hover .name {
   opacity: 1;
 }
 
@@ -74,7 +80,16 @@ body {
     text-align: center;
 }
 
-.slide, .pupil {
+.pupil {
+  fill: #000;
+  animation: goggle 3s infinite;
+}
+
+.spots{
+  fill:#F7931E;
+}
+
+.slide {
   animation: slide 4s infinite;
   transform-origin:bottom;  
 }
@@ -86,6 +101,10 @@ body {
 .shape {
   animation: breathe 1s infinite;
   transform-origin:bottom;
+}
+
+.grow {
+  animation: grow 5s infinite;
 }
 
 @keyframes slide{
@@ -127,6 +146,33 @@ body {
   }
 }
 
+@keyframes grow{
+  0%, 100%{
+    transform:
+      scaleY(1.05);
+      scaleX(1.05);
+  }
+  50%{
+    transform:
+      scaleY(0.95)
+      scaleX(0.95)
+  }
+}
+
+@keyframes goggle{
+  0%,100%{
+    animation-timing-function: linear
+  }
+  25%{
+    transform: translateY(-5px);
+    transform: translateX(-5px);
+  }
+  75%{
+    transform: translateY(0px);
+    transform: translateX(5px);
+  }  
+}
+
 .extra {fill:#16a085;}
 .minny {fill:#2ecc71;}
 .spike {fill:#2980b9;}
@@ -137,3 +183,19 @@ body {
 .crystal {fill:#d35400;}
 .arou {fill:#4DD0E1;}
 .zen {fill:#7986CB;}
+
+.delay-1 g, .delay-1 path, .delay-1 circle, .delay-1 ellipse {
+  animation-delay: 1s !important;
+}
+
+.delay-2 g, .delay-2 path, .delay-2 circle, .delay-2 ellipse {
+  animation-delay: 2s !important;
+}
+
+.delay-3 g, .delay-3 path, .delay-3 circle, .delay-3 ellipse {
+  animation-delay: 1.5s !important;
+}
+
+.delay-4 g, .delay-4 path, .delay-4 circle, .delay-4 ellipse {
+  animation-delay: 2.5s !important;
+}
