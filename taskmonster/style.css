@@ -83,6 +83,7 @@ body {
 .pupil {
   fill: #000;
   animation: goggle 3s infinite;
+  opacity: 0.5;
 }
 
 .spots{
@@ -91,25 +92,30 @@ body {
 
 .slide {
   animation: slide 4s infinite;
-  transform-origin:bottom;  
+  transform-origin:bottom; 
+  opacity: 0.5; 
 }
 .wobble {
   animation: wobble 4s infinite;
   transform-origin:bottom center;
   animation-timing-function: linear;
+  opacity: 0.5;
 }
 .shape {
   animation: breathe 1s infinite;
   transform-origin:bottom;
+  opacity: 0.5;
 }
 
 .grow {
   animation: grow 5s infinite;
+  opacity: 0.5;
 }
 
 @keyframes slide{
   0%,100%{
-    animation-timing-function: linear
+    animation-timing-function: linear;
+    opacity: 1;
   }
   25%{
     transform: translateX(4%);
@@ -121,8 +127,8 @@ body {
 
 @keyframes wobble{
   0%,100%{
-    transform:
-      rotate(0deg)
+    transform: rotate(0deg);
+    opacity: 1;
   }
   25%{
     transform:
@@ -136,8 +142,8 @@ body {
 
 @keyframes breathe{
   0%, 100%{
-    transform:
-      scaleY(1);
+    transform: scaleY(1);
+    opacity: 1;
   }
   50%{
     transform:
@@ -148,9 +154,8 @@ body {
 
 @keyframes grow{
   0%, 100%{
-    transform:
-      scaleY(1.05);
-      scaleX(1.05);
+    transform: scaleY(1.05) scaleX(1.05);
+      opacity: 1;
   }
   50%{
     transform:
@@ -161,7 +166,8 @@ body {
 
 @keyframes goggle{
   0%,100%{
-    animation-timing-function: linear
+    animation-timing-function: linear;
+    opacity: 1;
   }
   25%{
     transform: translateY(-5px);
