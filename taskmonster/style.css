@@ -183,6 +183,7 @@ body {
 .crystal {fill:#d35400;}
 .arou {fill:#4DD0E1;}
 .zen {fill:#7986CB;}
+.panda {fill:#a9e446;}
 
 .delay-1 g, .delay-1 path, .delay-1 circle, .delay-1 ellipse {
   animation-delay: 1s !important;

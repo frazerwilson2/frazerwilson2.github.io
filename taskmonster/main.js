@@ -35,7 +35,6 @@ function addNewItem() {
   var newLeft = $(window).width() / 2 + randomPos();
   var newTop = $(window).height() / 2 + randomPos();
   var chosenMonst = Math.ceil(Math.random() * monstLen);
-  console.log(chosenMonst);
   var newToDoObj = { id: newId, name: inputVal, type: chosenMonst, left: newLeft, top: newTop, colour: chosenClr };
   if (!toDoRecords) {
     toDoRecords = [newToDoObj];
@@ -58,7 +57,7 @@ $('input').on('keyup', function (e) {
 
 function setToDoPos(pos, id) {
   for (var i = 0; i < toDoRecords.length; i++) {
-    if (toDoRecords[i].id === id) {
+    if (toDoRecords[i].id === parseInt(id)) {
       toDoRecords[i].left = pos.left;
       toDoRecords[i].top = pos.top;
     }
@@ -82,7 +81,6 @@ function randomPos() {
 
 function buildToDoMonster(item) {
   var newToDo = $("#template").find('#monst' + item.type).clone();
-  console.log($(newToDo).children('.name').html());
   var randomSpeed = Math.ceil(Math.random() * anims);
   newToDo.children('.name').html(item.name);
   $(newToDo).attr('id', item.id).addClass('delay-' + randomSpeed);
