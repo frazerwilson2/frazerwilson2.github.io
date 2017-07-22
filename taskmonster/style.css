@@ -4,7 +4,7 @@ body {
   font-family: Arial, sans-serif;
 }
 #template .pep {
-  display: none;
+  /*display: none;*/
 }
 .pep {
   position: absolute;
@@ -74,7 +74,7 @@ body {
     text-align: center;
 }
 
-.slide {
+.slide, .pupil {
   animation: slide 4s infinite;
   transform-origin:bottom;  
 }
