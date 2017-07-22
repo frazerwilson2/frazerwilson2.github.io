@@ -30,7 +30,7 @@ function addNewItem() {
   if (!inputVal) {
     return;
   }
-  var newId = Math.round(Math.random() * 10000000000);
+  var newId = Date.now();
   var chosenClr = colors[Math.round(Math.random() * colorLen)];
   var newLeft = $(window).width() / 2 + randomPos();
   var newTop = $(window).height() / 2 + randomPos();
@@ -67,7 +67,6 @@ function setToDoPos(pos, id) {
 
 function removeToDo(id) {
   for (var i = 0; i < toDoRecords.length; i++) {
-    console.log(toDoRecords[i].id, id);
     if (toDoRecords[i].id === parseInt(id)) {
       toDoRecords.splice(i, 1);
     }
