@@ -93,6 +93,7 @@ setPeps();
 $(document).ready(function () {
   toDoRecords = JSON.parse(localStorage.getItem('dragToDoRecs'));
   //alert(toDoRecords);
+  $('#textList').hide();
   if (toDoRecords) {
     toDoRecords.forEach(function (item) {
       buildToDoMonster(item);
@@ -101,3 +102,22 @@ $(document).ready(function () {
     $('#toDoItem').focus();
   }
 });
+
+
+$('#textListBtn').hover(function () {
+  var tempList = $('<ul></ul>');
+  for (var i = toDoRecords.length - 1; i >= 0; i--) {
+    var tempListItem = '<li class="'
+    + toDoRecords[i].colour + '">'
+    + '<svg class="icon"><use xlink:href="#ref' + toDoRecords[i].type + '" /></svg>' 
+    + toDoRecords[i].name + '</li>';
+    tempList.append(tempListItem);
+  };
+  $('#textList').html(tempList);
+  toggleViews();
+});
+
+function toggleViews(){
+  $('#textList').toggle();
+  $('#toDoHolder').toggle();
+}
