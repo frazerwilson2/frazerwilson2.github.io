@@ -4,6 +4,7 @@ var colorLen = colors.length;
 var toDoRecords = [];
 var monstLen = $('#template .pep').length;
 var anims = 4;
+var inputVal;
 
 function setPeps() {
   $('#toDoHolder .pep').pep({
@@ -26,10 +27,7 @@ function setPeps() {
 }
 
 function addNewItem() {
-  var inputVal = $('#toDoItem').val();
-  if (!inputVal) {
-    return;
-  }
+  if (!inputVal) {return}
   var newId = Date.now();
   var chosenClr = colors[Math.round(Math.random() * colorLen)];
   var newLeft = $(window).width() / 2 + randomPos();
@@ -51,9 +49,18 @@ function addNewItem() {
 
 $('input').on('keyup', function (e) {
   if ($("input").is(":focus") && (e.keyCode === 13)) {
-    addNewItem();
+    onNewItemSubmit();
   }
 });
+
+function onNewItemSubmit() {
+  inputVal = $('#toDoItem').val();
+  if (!inputVal) {
+    console.log('no name given');
+    return;
+  }
+  addNewItem();
+}
 
 function setToDoPos(pos, id) {
   for (var i = 0; i < toDoRecords.length; i++) {
