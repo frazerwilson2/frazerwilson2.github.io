@@ -29,11 +29,10 @@ function setPeps() {
 function addNewItem() {
   if (!inputVal) {return}
   var newId = Date.now();
-  var chosenClr = colors[Math.round(Math.random() * colorLen)];
-  var newLeft = $(window).width() / 2 + randomPos();
-  var newTop = $(window).height() / 2 + randomPos();
-  var chosenMonst = Math.ceil(Math.random() * monstLen);
-  var newToDoObj = { id: newId, name: inputVal, type: chosenMonst, left: newLeft, top: newTop, colour: chosenClr };
+
+  var chosenMonst = new Tm.Monster();
+
+  var newToDoObj = { id: newId, name: inputVal, Monster: chosenMonst };
   if (!toDoRecords) {
     toDoRecords = [newToDoObj];
   }
@@ -65,10 +64,13 @@ function onNewItemSubmit() {
 function setToDoPos(pos, id) {
   for (var i = 0; i < toDoRecords.length; i++) {
     if (toDoRecords[i].id === parseInt(id)) {
-      toDoRecords[i].left = pos.left;
-      toDoRecords[i].top = pos.top;
+      toDoRecords[i].Monster.SetPosition(pos.top, pos.left);
+      console.log(toDoRecords[i].Monster);
+      //toDoRecords[i].Monster.Position.Left = pos.left;
+      //toDoRecords[i].Monster.Position.Top = pos.top;
     }
   }
+
   localStorage.setItem('dragToDoRecs', JSON.stringify(toDoRecords));
 }
 
@@ -86,13 +88,14 @@ function randomPos() {
 }
 
 function buildToDoMonster(item) {
-  var newToDo = $("#template").find('#monst' + item.type).clone();
-  var randomSpeed = Math.ceil(Math.random() * anims);
+  var newToDo = item.Monster.BuildElement(item.id, $('#toDoHolder'));
+  //var newToDo = $("#template").find('#monst' + item.Monster.Type).clone();
+  //var randomSpeed = Math.ceil(Math.random() * anims);
   newToDo.children('.name').html(item.name);
-  $(newToDo).attr('id', item.id).addClass('delay-' + randomSpeed);
-  $(newToDo).find('.mbody').addClass(item.colour);
-  newToDo.appendTo($('#toDoHolder'));
-  newToDo.css({ top: item.top, left: item.left });
+  //$(newToDo).attr('id', item.id).addClass('delay-' + randomSpeed);
+  //$(newToDo).find('.mbody').addClass(item.Monster.Colour);
+  //newToDo.appendTo($('#toDoHolder'));
+  //newToDo.css({ top: item.Monster.Position.Top, left: item.Monster.Position.Left });
 }
 
 setPeps();
@@ -103,6 +106,7 @@ $(document).ready(function () {
   $('#textList').hide();
   if (toDoRecords) {
     toDoRecords.forEach(function (item) {
+      item.Monster = new Tm.Monster(item.Monster);
       buildToDoMonster(item);
     });
     setPeps();
@@ -115,8 +119,8 @@ $('#textListBtn').hover(function () {
   var tempList = $('<ul></ul>');
   for (var i = toDoRecords.length - 1; i >= 0; i--) {
     var tempListItem = '<li class="'
-    + toDoRecords[i].colour + '">'
-    + '<svg class="icon"><use xlink:href="#ref' + toDoRecords[i].type + '" /></svg>' 
+    + toDoRecords[i].Monster.Colour + '">'
+    + '<svg class="icon"><use xlink:href="#ref' + toDoRecords[i].Monster.Type + '" /></svg>' 
     + toDoRecords[i].name + '</li>';
     tempList.append(tempListItem);
   };
