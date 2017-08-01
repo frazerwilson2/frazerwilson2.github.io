@@ -111,6 +111,7 @@ $(document).ready(function () {
     });
     setPeps();
     $('#toDoItem').focus();
+    console.log(toDoRecords);
   }
 });
 

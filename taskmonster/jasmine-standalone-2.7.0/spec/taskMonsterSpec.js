@@ -36,12 +36,13 @@ describe("When adding new item", function() {
   });
 
   it("should have correct properties", function() {
+    console.log(sampleToDo);
   	expect(sampleToDo.name).toEqual(testToDoName);
   	expect(sampleToDo.id).toEqual(jasmine.any(Number));
-  	expect(sampleToDo.colour).toBeDefined();
-	expect(sampleToDo.left).toEqual(jasmine.any(Number));
-	expect(sampleToDo.top).toEqual(jasmine.any(Number));
-	expect(sampleToDo.type).toEqual(jasmine.any(Number));
+  	expect(sampleToDo.Monster.Props.Colour).toBeDefined();
+	 expect(sampleToDo.Monster.Props.Position.Left).toEqual(jasmine.any(Number));
+	 expect(sampleToDo.Monster.Props.Position.Top).toEqual(jasmine.any(Number));
+	 expect(sampleToDo.Monster.Props.Type).toEqual(jasmine.any(Number));
   });
 
 });
