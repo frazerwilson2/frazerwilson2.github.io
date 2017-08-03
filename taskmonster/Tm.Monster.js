@@ -30,7 +30,6 @@ Tm.Monster = (function($){
     var Monster = function(existing) {
         if(existing) {
             this.Props = existing.Props;
-            console.log("location: " + this.Props.Position.Top + "," + this.Props.Position.Left);
         }
         else {
             this.Props = self.GenerateMonster();
@@ -40,18 +39,16 @@ Tm.Monster = (function($){
     Monster.prototype.SetPosition = function(top, left){
         this.Props.Position.Top = top;
         this.Props.Position.Left = left;
-        console.log("setting props");
-        console.log(this.Props);
     };
 
     Monster.prototype.BuildElement = function(id, parent) {
         var newToDo = $("#template").find('#monst' + this.Props.Type).clone();
         var randomSpeed = Math.ceil(Math.random() * anims);
-        //newToDo.children('.name').html(item.name);
+ 
         $(newToDo).attr('id', id).addClass('delay-' + randomSpeed);
         $(newToDo).find('.mbody').addClass(this.Props.Colour);
         newToDo.appendTo(parent);
-        console.log(this.Props.Position);
+        
         newToDo.css({ top: this.Props.Position.Top, left: this.Props.Position.Left });
         return newToDo;
     };
