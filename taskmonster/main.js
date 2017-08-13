@@ -1,4 +1,4 @@
-var toDoRecords = [];
+var toDoRecords = null;
 var storage = new Tm.StorageProvider("dragToDoRecs", []);
 
 function setPeps() {
@@ -96,7 +96,7 @@ $('#textListBtn').hover(function() {
     for (var i = toDoRecords.length - 1; i >= 0; i--) {
         var tempListItem = '<li class="' +
             toDoRecords[i].Monster.Colour + '">' +
-            '<svg class="icon"><use xlink:href="#ref' + toDoRecords[i].Monster.Type + '" /></svg>' +
+            '<svg class="icon"><use xlink:href="#ref' + toDoRecords[i].Monster.Props.Type + '" /></svg>' +
             toDoRecords[i].name + '</li>';
         tempList.append(tempListItem);
     };
@@ -113,4 +113,10 @@ $('input').on('keyup', function(e) {
 function toggleViews() {
     $('#textList').toggle();
     $('#toDoHolder').toggle();
+}
+
+if ('serviceWorker' in navigator) {
+    navigator.serviceWorker
+        .register('/sw.js')
+        .then(function() { console.log('Service Worker Registered'); });
 }
