@@ -7,14 +7,14 @@ Tm.StorageProvider = (function() {
         localStorage.setItem(key, JSON.stringify(value));
     };
 
-    self.Retrieve = function(key) {
+    self.Retrieve = function(key, defaultValue) {
         var value = localStorage.getItem(key);
         if (value) {
             return JSON.parse(value);
         }
 
-        if (this.Default) {
-            return this.Default;
+        if (defaultValue) {
+            return defaultValue;
         }
 
         return null;
@@ -30,7 +30,7 @@ Tm.StorageProvider = (function() {
     };
 
     pub.prototype.Retrieve = function() {
-        return self.Retrieve(this.Key);
+        return self.Retrieve(this.Key, this.Default);
     };
 
     return pub;
