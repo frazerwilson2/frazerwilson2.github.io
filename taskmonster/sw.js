@@ -3,12 +3,12 @@ var dataCacheName = 'weatherData-v1';
 
 var filesToCache = [
     '/',
-    '/index.html',
-    '/main.js',
-    '/Tm.Monster.js',
-    '/Tm.StorageProvider.js',
-    '/style.css',
-    '/list.svg'
+    'index.html',
+    'main.js',
+    'Tm.Monster.js',
+    'Tm.StorageProvider.js',
+    'style.css',
+    'list.svg'
 ];
 
 self.addEventListener('install', function(e) {
