@@ -208,17 +208,42 @@ li svg {
 .panda {fill:#a9e446; color: #a9e446;}
 
 .delay-1 g, .delay-1 path, .delay-1 circle, .delay-1 ellipse {
-  animation-delay: 1s !important;
+  animation-delay: -1s !important;
 }
 
 .delay-2 g, .delay-2 path, .delay-2 circle, .delay-2 ellipse {
-  animation-delay: 2s !important;
+  animation-delay: -2s !important;
 }
 
 .delay-3 g, .delay-3 path, .delay-3 circle, .delay-3 ellipse {
-  animation-delay: 1.5s !important;
+  animation-delay: -1.5s !important;
 }
 
 .delay-4 g, .delay-4 path, .delay-4 circle, .delay-4 ellipse {
-  animation-delay: 2.5s !important;
+  animation-delay: -2.5s !important;
+}
+
+
+/* BG svg */
+
+#bg svg {
+  position: absolute;
+  height:100%;
+}
+@media (min-width: 800px){
+  #bg svg {
+    width: 100%;
+  }
+}
+.stb{fill:#C4C439;}
+  .st0{opacity:0.1;fill:url(#SVGID_1_);}
+  .st1{opacity:0.1;fill:url(#SVGID_2_);}
+  .st2{opacity:0.1;fill:url(#SVGID_3_);}
+  .st3{opacity:0.1;fill:url(#SVGID_4_);}
+  .st4{opacity:0.3;fill:#FFFDC7;}
+  .st5{fill:#FFFDC7;}
+  .st10{fill:#FFFDC7;}
+.st11{fill:#FFFEEE;}
+#Rays {
+  fill-opacity: 0.3;
 }

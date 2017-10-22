@@ -77,7 +77,8 @@ function buildToDoMonster(item) {
 
 $(document).ready(function() {
     toDoRecords = storage.Retrieve();
-
+console.log(toDoRecords.length);
+$('body').addClass('list-num-' + toDoRecords.length);
     $('#textList').hide();
     if (toDoRecords) {
         toDoRecords.forEach(function(item) {
