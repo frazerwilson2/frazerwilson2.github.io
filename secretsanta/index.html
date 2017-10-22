@@ -1,0 +1,220 @@
+<html class="fa-events-icons-ready">
+<head>
+  <title>Secret Santa</title>
+  <style type="text/css">
+  @charset "UTF-8";[ng\:cloak],[ng-cloak],[data-ng-cloak],[x-ng-cloak],.ng-cloak,.x-ng-cloak,.ng-hide:not(.ng-hide-animate){display:none !important;}ng\:form{display:block;}.ng-animate-shim{visibility:hidden;}.ng-anchor{position:absolute;}
+</style>
+<meta charset="UTF-8">
+<script src="https://use.fontawesome.com/08007ac5d7.js"></script><link href="https://use.fontawesome.com/08007ac5d7.css" media="all" rel="stylesheet">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<style class="cp-pen-styles">* {
+  font-family:sans-serif;
+}
+
+body {
+  background:url('bg.png');
+}
+
+#main > div {
+  background:#fff;
+  padding:50px;
+  width:500px;
+  margin:auto;
+  border-radius:10px;
+  box-shadow:0px 0px 10px #000;
+}
+h1 {
+  color:red;
+  font-size:28px;
+  margin:0 0 15px;
+}
+.rows {
+  margin:5px 0;
+}
+input {
+  padding:5px;
+  border-radius:4px;
+  border:1px #ccc solid;
+  font-size:18px;
+  width:150px;
+}
+a {
+  color:green;
+  padding:3px;
+  display:inline-block;
+  cursor:pointer;
+  margin-top: 10px;
+}
+.assign {
+  text-align:right;
+}
+.bold-button {
+  background:green;
+  color:#fff;
+  padding:8px 12px;
+  border-radius:4px;
+}
+p {
+  color:#ccc;
+}
+.grey {
+  color:#ccc;
+}
+
+@media (max-width: 600px) {
+  #main > div {
+    width: auto;
+    padding: 5%;
+  }
+  input {
+    width: 100%;
+    margin: 5px 0;
+    padding: 10px;
+  }
+  .rows {
+    padding-bottom: 10px;
+    background: #efeded;
+    padding: 3%;
+    border-radius: 10px;
+  }
+}
+
+</style>
+</head>
+<body>
+<div ng-app="secretSanta" ng-controller="control" id="main" class="ng-scope">
+  
+  <div ng-hide="users.complete">
+    <h1>Assign your secret santa!</h1>
+  <!-- ngRepeat: x in users.players --><div ng-repeat="x in users.players" class="rows ng-scope">
+    <input placeholder="name" ng-model="x.name" class="ng-pristine ng-untouched ng-valid ng-empty">
+    Avoid giving them:
+    <input placeholder="name (optional)" ng-model="x.not" class="ng-pristine ng-untouched ng-valid ng-empty">
+    <a ng-click="remove($index)" ng-hide="users.players.length < 2" class="ng-hide"><i class="fa fa-times-circle" aria-hidden="true"></i></a>
+  </div><!-- end ngRepeat: x in users.players -->
+  <a ng-click="addPlayer()"><i class="fa fa-plus-square" aria-hidden="true"></i> Add</a>
+    <p>Add at least 4 people</p>
+    <div class="assign ng-hide" ng-show="users.players.length > 3">
+  <a ng-click="assign()" class="bold-button"><i class="fa fa-check" aria-hidden="true"></i> Assign</a>
+    </div>
+  </div>
+    
+  <div ng-show="users.complete" class="ng-hide">
+<h1>Who'd you get?</h1>
+<p>Enter your name</p>
+    <input ng-model="entry" class="ng-pristine ng-untouched ng-valid ng-empty">
+    <a class="bold-button" ng-click="findGiftee()" placeholder="Name">Find my giftee</a><br>
+    <div>
+    <a ng-click="emailGiftee()">Email it to me</a>
+    <a ng-click="return()" class="grey"><i class="fa fa-arrow-left" aria-hidden="true"></i> Return (resets the whole thing..)</a>
+    </div>
+  </div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.8/angular.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+<script>
+var app = angular.module('secretSanta',[]);
+
+app.controller('control', function($scope){
+  if(localStorage.getItem('secretsanta')){
+    $scope.users = JSON.parse(localStorage.getItem('secretsanta'));
+  }
+  else {
+    $scope.users = {
+      'complete':false,
+      'players':[
+        {'name':'','match':null,'not':''}
+      ]
+    };
+  }
+  
+  $scope.addPlayer = function(){
+    $scope.users.players.push({'name':'','match':null,'not':''});
+  }
+  
+  $scope.remove = function(index){
+    $scope.users.players.splice(index, 1);
+  }
+  
+  $scope.assign = function(){
+    $scope.users.complete = false;
+    $scope.outputList = [];
+    angular.forEach($scope.users.players, function(val, key){
+      if(!val.name){
+        $scope.users.players.splice(key, 1);
+      }
+      $scope.outputList.push(key);
+    });
+    assignFunc();
+    $scope.users.complete = true;
+    localStorage.setItem('secretsanta', JSON.stringify($scope.users));
+  }
+
+  function assignFunc() {
+    shuffle($scope.outputList);
+    angular.forEach($scope.users.players, function(val, key){
+      val.match = $scope.outputList[key];
+    });
+    var matches = false;
+    //check nobody gets themselves (or specified 'not')
+    angular.forEach($scope.users.players, function(val, key){
+      if(key == val.match || $scope.users.players[val.match].name.toUpperCase() == val.not.toUpperCase()){
+        matches = true;
+      };
+    });
+    if(matches){assignFunc();}
+  }
+  
+  function shuffle(a) {
+    var j, x, i;
+    for (i = a.length; i; i--) {
+        j = Math.floor(Math.random() * i);
+        x = a[i - 1];
+        a[i - 1] = a[j];
+        a[j] = x;
+    }
+  }
+
+  $scope.findGiftee = function(){
+    var res = $scope.retrieveGiftee();
+    if(res !== null){
+      alert('You are buying for ' + $scope.users.players[$scope.users.players[res].match].name);    
+      $scope.entry = '';
+    }
+    else {
+      alert('Not found - do you know your name?');
+    }
+  }
+  
+  $scope.retrieveGiftee = function(name){
+    var found = false;
+    var user = null;
+    if(name){$scope.entry = name};
+    angular.forEach($scope.users.players, function(val, key){    
+      if(val.name.toUpperCase() == $scope.entry.toUpperCase()){
+        found = true;
+        user = key;
+      };
+    });
+    return user;
+  }
+
+  $scope.emailGiftee = function(){
+    var name = prompt("Enter your name", "");
+    var person = prompt("Enter your email", "");
+    var res = $scope.retrieveGiftee(name);
+    if(res !== null) {
+      var match = $scope.users.players[$scope.users.players[res].match].name;
+      document.location.href = "mailto:" + person + "&subject='secret santa'&body='You got '" + match;
+    }
+  }
+  
+  $scope.return = function(){
+    $scope.users.complete = false;
+    localStorage.removeItem('secretsanta');
+  }
+});
+</script>
+</body></html>
