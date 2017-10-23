@@ -30,6 +30,7 @@ function addNewItem(value) {
     var newToDoObj = { id: newId, name: value, Monster: chosenMonst };
     toDoRecords.push(newToDoObj);
     storage.Store(toDoRecords);
+    bindBgClass(toDoRecords.length);
 
     buildToDoMonster(newToDoObj);
 
@@ -64,6 +65,8 @@ function removeToDo(id) {
     }
 
     storage.Store(toDoRecords);
+    console.log(toDoRecords.length);
+    bindBgClass(toDoRecords.length);
 }
 
 function randomPos() {
@@ -77,8 +80,7 @@ function buildToDoMonster(item) {
 
 $(document).ready(function() {
     toDoRecords = storage.Retrieve();
-console.log(toDoRecords.length);
-$('body').addClass('list-num-' + toDoRecords.length);
+    bindBgClass(toDoRecords.length);
     $('#textList').hide();
     if (toDoRecords) {
         toDoRecords.forEach(function(item) {
@@ -91,6 +93,18 @@ $('body').addClass('list-num-' + toDoRecords.length);
     }
 });
 
+function bindBgClass (num) {
+    $('body').removeClass('sunset');
+    $('body').removeClass('evening');
+    var numClass;
+    if(num > 3){
+        numClass = 'sunset';
+    }
+    if(num > 5){
+        numClass = 'evening';
+    }
+    $('body').addClass(numClass);
+}
 
 $('#textListBtn').hover(function() {
     var tempList = $('<ul></ul>');

@@ -2,6 +2,7 @@ body {
   margin: 0;
   padding: 0;
   font-family: Arial, sans-serif;
+  overflow: hidden;
 }
 #template .pep {
   display: none;
@@ -229,6 +230,10 @@ li svg {
 #bg svg {
   position: absolute;
   height:100%;
+  transition: all 2.5s;
+}
+#bg svg * {
+  -webkit-transition: all 2.5s;
 }
 @media (min-width: 800px){
   #bg svg {
@@ -242,8 +247,20 @@ li svg {
   .st3{opacity:0.1;fill:url(#SVGID_4_);}
   .st4{opacity:0.3;fill:#FFFDC7;}
   .st5{fill:#FFFDC7;}
-  .st10{fill:#FFFDC7;}
-.st11{fill:#FFFEEE;}
+  .st10{fill:#e8fcff;}
+.st11{fill:#c8f8ff}
 #Rays {
   fill-opacity: 0.3;
 }
+
+.sunset #Rays {opacity: 0;}
+.sunset #BGTile .st11 {fill:#ffc150;}
+.sunset #Sun .st4{opacity:0.1;fill:#FFFDC7;r:80;cy: 150;}
+.sunset #Sun .st5{fill:#ffe985;r:65;cy: 150;}
+.sunset #Grass .stb {fill:#929216;}
+
+.evening #Rays {opacity: 0;}
+.evening #BGTile .st11 {fill:#c74617;}
+.evening #Sun .st4{opacity:0.1;fill:#f7a7a7;r:110;cy: 200;}
+.evening #Sun .st5{fill:#f78962;r: 40;cy: 200;}
+.evening #Grass .stb {fill:#464605;}
