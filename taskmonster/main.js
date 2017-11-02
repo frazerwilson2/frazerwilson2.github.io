@@ -75,7 +75,7 @@ function randomPos() {
 
 function buildToDoMonster(item) {
     var newToDo = item.Monster.BuildElement(item.id, $('#toDoHolder'));
-    newToDo.children('.name').html(item.name);
+    newToDo.children('.name').children('span').html(item.name);
 }
 
 $(document).ready(function() {
@@ -106,22 +106,19 @@ function bindBgClass (num) {
     $('body').addClass(numClass);
 }
 
-$('#textListBtn').hover(function() {
-    var tempList = $('<ul></ul>');
-    for (var i = toDoRecords.length - 1; i >= 0; i--) {
-        var tempListItem = '<li class="' +
-            toDoRecords[i].Monster.Colour + '">' +
-            '<svg class="icon"><use xlink:href="#ref' + toDoRecords[i].Monster.Props.Type + '" /></svg>' +
-            toDoRecords[i].name + '</li>';
-        tempList.append(tempListItem);
-    };
-    $('#textList').html(tempList);
-    toggleViews();
-});
-
 $('input').on('keyup', function(e) {
     if ($("input").is(":focus") && (e.keyCode === 13)) {
         onNewItemSubmit();
+    }
+});
+
+$('#action .toggle').on('click', function(){
+    if($('#action').hasClass('open')){
+        $('#action').removeClass('open');
+    }
+    else {
+        $('#action').addClass('open');    
+        $('#toDoItem').focus();
     }
 });
 
