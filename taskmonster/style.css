@@ -91,8 +91,20 @@ li svg {
   opacity: 1;
 }
 
+.closeicon{fill-rule:evenodd;clip-rule:evenodd;fill:#fff;}
+
+#action #closeIcon {
+  display: none;
+}
+#action.open #closeIcon {
+  display: inline-block;
+}
+#action.open #logo {
+  display: none;
+}
+
 #action {
-  background: rgba(196, 242, 76, 1);
+  background: #ACDD31;
   position: absolute;
   left: 0px;
   bottom: 0px;
@@ -105,6 +117,7 @@ li svg {
 #action .toggle {
   height: 100%;
   text-align: center;
+  cursor: pointer;
 }
 
 #action.open .toggle {
@@ -125,6 +138,10 @@ li svg {
 
 #action.open .content {
   display: block;
+}
+
+.content {
+  padding: 2%;
 }
 
 .pupil {
@@ -281,11 +298,18 @@ li svg {
   .st2{opacity:0.1;fill:url(#SVGID_3_);}
   .st3{opacity:0.1;fill:url(#SVGID_4_);}
   .st4{opacity:0.3;fill:#FFFDC7;}
-  .st5{fill:#FFFDC7;}
+  .st5{fill:#FFFDC7;fill}
   .st10{fill:#e8fcff;}
 .st11{fill:#c8f8ff}
+
 #Rays {
   fill-opacity: 0.3;
+}
+#Grass {
+  z-index: 2;
+}
+#Layer_1 {
+  z-index: 3;
 }
 
 .sunset #Rays {opacity: 0;}
@@ -294,8 +318,21 @@ li svg {
 .sunset #Sun .st5{fill:#ffe985;r:65;cy: 150;}
 .sunset #Grass .stb {fill:#929216;}
 
-.evening #Rays {opacity: 0;}
-.evening #BGTile .st11 {fill:#c74617;}
+.evening #Rays {opacity: 0;margin-top: 140px;}
+.evening #BGTile {
+  /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#c74617+0,e08e31+59,f2dc37+100 */
+  background: #c74617; /* Old browsers */
+  background: -moz-linear-gradient(top, #c74617 0%, #e08e31 59%, #f2dc37 100%); /* FF3.6-15 */
+  background: -webkit-linear-gradient(top, #c74617 0%,#e08e31 59%,#f2dc37 100%); /* Chrome10-25,Safari5.1-6 */
+  background: linear-gradient(to bottom, #c74617 0%,#e08e31 59%,#f2dc37 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#c74617', endColorstr='#f2dc37',GradientType=0 ); /* IE6-9 */
+}
+.evening #BGTile .st11 {fill:transparent;cy: 200;}
 .evening #Sun .st4{opacity:0.1;fill:#f7a7a7;r:110;cy: 200;}
 .evening #Sun .st5{fill:#f78962;r: 40;cy: 200;}
 .evening #Grass .stb {fill:#464605;}
+
+#logo {
+  width: 70px;
+  margin: 10px 0;
+}
