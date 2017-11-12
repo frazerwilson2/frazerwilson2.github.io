@@ -103,7 +103,10 @@ li {
     border-radius: 10px;
   }
 }
-
+#shareLink {
+  position: absolute;
+  left: -200%;
+}
 </style>
 </head>
 <body>
@@ -139,10 +142,9 @@ li {
       <a class="bold-button" ng-click="findGiftee(namePicked)">Do it</a>
       <a class="bold-button greyBtn" ng-click="notGiftee()">Cancel</a>
     </div>
-<!--<input ng-model="entry" class="ng-pristine ng-untouched ng-valid ng-empty">
-    <a class="bold-button" ng-click="findGiftee()" placeholder="Name">Find my giftee</a><br>
-    <div>
-    <a ng-click="emailGiftee()">Email it to me</a> -->
+
+    <input type="text" id="shareLink" value="{{shareLink}}">
+    <p>Share link with other members of your group - <a ng-click="getCopyLink()">copy link</a></p><br>
     <a ng-click="return()" class="grey"><i class="fa fa-arrow-left" aria-hidden="true"></i> Return (resets the whole thing..)</a>
     </div>
   </div>
@@ -181,11 +183,11 @@ $scope.start = function(savedSanta){
   $scope.loading = false;
   if(savedSanta){
     $scope.users = JSON.parse(savedSanta['ssid']);
-    console.log($scope.users);
+    // console.log($scope.users);
     $scope.$apply();
   }
   else {
-    console.log('no data received, starting anew');
+    // console.log('no data received, starting anew');
     $scope.users = {
       'complete':false,
       'players':[
@@ -196,20 +198,20 @@ $scope.start = function(savedSanta){
 }
 
   existingSS = getParameterByName('ssid');
-  console.log(existingSS);
+  // console.log(existingSS);
   if(existingSS){
     var dbRef = firebase.database().ref(existingSS);
     var savedSanta;
     dbRef.on("value", function(snapshot) {
       savedSanta = snapshot.val();
-      console.log(savedSanta);
+      // console.log(savedSanta);
       if(!savedSanta){
-        console.log('no data for ' + existingSS);
+        // console.log('no data for ' + existingSS);
         window.history.pushState(siteDeets.name, siteDeets.title, siteDeets.url);
       }
       $scope.start(savedSanta);
     }, function (errorObject) {
-      console.log("The read failed: " + errorObject.code);
+      // console.log("The read failed: " + errorObject.code);
     });
   }
   else {
@@ -287,10 +289,18 @@ $scope.start = function(savedSanta){
     }
   }
 
+  $scope.getCopyLink = function(){
+    $('#shareLink').val(document.location.href);
+    var copyText = $('#shareLink');
+    copyText.select();
+    document.execCommand("Copy");
+    alert("Copied the link");
+  }
+
   $scope.namePicked = false;
   $scope.selectName = function(name){
     $scope.namePicked = name;
-    console.log(name);
+    // console.log(name);
   }
 
   $scope.notGiftee = function(){
@@ -304,7 +314,7 @@ $scope.start = function(savedSanta){
     if(res !== null){
       alert('You are buying for ' + $scope.users.players[$scope.users.players[res].match].name);    
       $scope.namePicked.seen = true;
-      console.log($scope.namePicked);
+      // console.log($scope.namePicked);
       $scope.entry = '';
       $scope.namePicked = false;
       setTimeout(function(){
