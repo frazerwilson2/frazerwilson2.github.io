@@ -68,11 +68,22 @@ a {
   padding:8px 12px;
   border-radius:4px;
 }
+.bold-button.greyBtn {
+  background: #c7c7c7;
+}
 p {
   color:#ccc;
 }
 .grey {
   color:#ccc;
+}
+li {
+  text-transform: capitalize;
+  padding: 5px 0;
+}
+.strike {
+  text-decoration: line-through;
+  opacity: 0.4;
 }
 
 @media (max-width: 600px) {
@@ -97,7 +108,7 @@ p {
 </head>
 <body>
 <div ng-app="secretSanta" ng-controller="control" id="main" class="ng-scope">
-  <div class="loading" ng-show="loading"><img src="spinner.svg" alt="loading"></div>
+  <div class="loading" ng-show="loading"><img src="loading.svg" alt="loading"></div>
   <div ng-hide="users.complete">
     <h1>Assign your secret santa!</h1>
   <!-- ngRepeat: x in users.players --><div ng-repeat="x in users.players" class="rows ng-scope">
@@ -114,12 +125,24 @@ p {
   </div>
     
   <div ng-show="users.complete" class="ng-hide">
-<h1>Who'd you get?</h1>
-<p>Enter your name</p>
-    <input ng-model="entry" class="ng-pristine ng-untouched ng-valid ng-empty">
+    <h1>Who'd you get?</h1>
+    <p>select your name</p>
+    <ul ng-hide="namePicked">
+      <li ng-repeat="name in users.players" ng-class="{strike: name.seen}">
+        <span ng-hide="name.seen" ng-click="selectName(name)">{{name.name}}</span>
+        <span ng-show="name.seen">{{name.name}}</span>
+      </li>
+    </ul>
+    <div ng-show="namePicked">
+      <h3>See secret santa for {{namePicked.name}}?</h3>
+      <p>This can only be done once, don't do it if you are not {{namePicked.name}}</p>
+      <a class="bold-button" ng-click="findGiftee(namePicked)">Do it</a>
+      <a class="bold-button greyBtn" ng-click="notGiftee()">Cancel</a>
+    </div>
+<!--<input ng-model="entry" class="ng-pristine ng-untouched ng-valid ng-empty">
     <a class="bold-button" ng-click="findGiftee()" placeholder="Name">Find my giftee</a><br>
     <div>
-    <a ng-click="emailGiftee()">Email it to me</a>
+    <a ng-click="emailGiftee()">Email it to me</a> -->
     <a ng-click="return()" class="grey"><i class="fa fa-arrow-left" aria-hidden="true"></i> Return (resets the whole thing..)</a>
     </div>
   </div>
@@ -130,7 +153,8 @@ p {
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
 <script src="https://www.gstatic.com/firebasejs/4.6.2/firebase.js"></script>
 <script>
-
+var ssid;
+var dbRef;
 // Initialize Firebase
 var config = {
   apiKey: "AIzaSyDxF47-V17SwvFSo__HYAthDf63P3SdtN0",
@@ -165,7 +189,7 @@ $scope.start = function(savedSanta){
     $scope.users = {
       'complete':false,
       'players':[
-        {'name':'','match':null,'not':''}
+        {'name':'','match':null,'not':'',seen:false}
       ]
     };
   }
@@ -193,7 +217,7 @@ $scope.start = function(savedSanta){
   }
   
   $scope.addPlayer = function(){
-    $scope.users.players.push({'name':'','match':null,'not':''});
+    $scope.users.players.push({'name':'','match':null,'not':'',seen:false});
   }
   
   $scope.remove = function(index){
@@ -211,8 +235,8 @@ $scope.start = function(savedSanta){
     });
     assignFunc();
     $scope.users.complete = true;
-    var ssid = makeid();
-    var dbRef = firebase.database().ref(ssid);
+    ssid = makeid();
+    dbRef = firebase.database().ref(ssid);
     dbRef.set({
       ssid: JSON.stringify($scope.users)
     });
@@ -263,14 +287,34 @@ $scope.start = function(savedSanta){
     }
   }
 
+  $scope.namePicked = false;
+  $scope.selectName = function(name){
+    $scope.namePicked = name;
+    console.log(name);
+  }
+
+  $scope.notGiftee = function(){
+    $scope.entry = '';
+    $scope.namePicked = false;
+  }
+
   $scope.findGiftee = function(){
+    $scope.entry = $scope.namePicked.name;
     var res = $scope.retrieveGiftee();
     if(res !== null){
       alert('You are buying for ' + $scope.users.players[$scope.users.players[res].match].name);    
+      $scope.namePicked.seen = true;
+      console.log($scope.namePicked);
       $scope.entry = '';
+      $scope.namePicked = false;
+      setTimeout(function(){
+        dbRef.set({
+          ssid: JSON.stringify($scope.users)
+        });
+      }, 200);
     }
     else {
-      alert('Not found - do you know your name?');
+      alert('Not found - thats kind of weird, might have to start again');
     }
   }
   
