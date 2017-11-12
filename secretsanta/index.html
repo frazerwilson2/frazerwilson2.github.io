@@ -24,6 +24,19 @@ body {
   border-radius:10px;
   box-shadow:0px 0px 10px #000;
 }
+#main > div.loading {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  border-radius: 0;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  color: white;
+  text-align: center;
+  padding: 0;
+  margin: 0;
+}
 h1 {
   color:red;
   font-size:28px;
@@ -84,7 +97,7 @@ p {
 </head>
 <body>
 <div ng-app="secretSanta" ng-controller="control" id="main" class="ng-scope">
-  
+  <div class="loading" ng-show="loading"><img src="spinner.svg" alt="loading"></div>
   <div ng-hide="users.complete">
     <h1>Assign your secret santa!</h1>
   <!-- ngRepeat: x in users.players --><div ng-repeat="x in users.players" class="rows ng-scope">
@@ -113,21 +126,70 @@ p {
 </div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.8/angular.min.js"></script>
+<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/1.0.3/angular-ui-router.js"></script> -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+<script src="https://www.gstatic.com/firebasejs/4.6.2/firebase.js"></script>
 <script>
-var app = angular.module('secretSanta',[]);
 
+// Initialize Firebase
+var config = {
+  apiKey: "AIzaSyDxF47-V17SwvFSo__HYAthDf63P3SdtN0",
+  authDomain: "secret-santa-e50db.firebaseapp.com",
+  databaseURL: "https://secret-santa-e50db.firebaseio.com",
+  projectId: "secret-santa-e50db",
+  storageBucket: "secret-santa-e50db.appspot.com",
+  messagingSenderId: "168387757617"
+};
+firebase.initializeApp(config);
+
+var app = angular.module('secretSanta',[]);
 app.controller('control', function($scope){
-  if(localStorage.getItem('secretsanta')){
-    $scope.users = JSON.parse(localStorage.getItem('secretsanta'));
+  $scope.users = [];
+  $scope.loading = true;
+  var siteDeets = {
+    name: 'SecretSanta',
+    title: 'Secret Santa',
+    url: 'index.html'
+  }
+
+$scope.start = function(savedSanta){
+  // console.log(savedSanta);
+  $scope.loading = false;
+  if(savedSanta){
+    $scope.users = JSON.parse(savedSanta['ssid']);
+    console.log($scope.users);
+    $scope.$apply();
   }
   else {
+    console.log('no data received, starting anew');
     $scope.users = {
       'complete':false,
       'players':[
         {'name':'','match':null,'not':''}
       ]
     };
+  }
+}
+
+  existingSS = getParameterByName('ssid');
+  console.log(existingSS);
+  if(existingSS){
+    var dbRef = firebase.database().ref(existingSS);
+    var savedSanta;
+    dbRef.on("value", function(snapshot) {
+      savedSanta = snapshot.val();
+      console.log(savedSanta);
+      if(!savedSanta){
+        console.log('no data for ' + existingSS);
+        window.history.pushState(siteDeets.name, siteDeets.title, siteDeets.url);
+      }
+      $scope.start(savedSanta);
+    }, function (errorObject) {
+      console.log("The read failed: " + errorObject.code);
+    });
+  }
+  else {
+    $scope.start();
   }
   
   $scope.addPlayer = function(){
@@ -149,7 +211,31 @@ app.controller('control', function($scope){
     });
     assignFunc();
     $scope.users.complete = true;
-    localStorage.setItem('secretsanta', JSON.stringify($scope.users));
+    var ssid = makeid();
+    var dbRef = firebase.database().ref(ssid);
+    dbRef.set({
+      ssid: JSON.stringify($scope.users)
+    });
+    window.history.pushState(siteDeets.name, siteDeets.title, siteDeets.url + '?ssid=' + ssid);
+    // document.location.search = 'index.html?ssid=' + ssid;
+  }
+
+  function getParameterByName(name, url) {
+      if (!url) url = window.location.href;
+      name = name.replace(/[\[\]]/g, "\\$&");
+      var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
+          results = regex.exec(url);
+      if (!results) return null;
+      if (!results[2]) return '';
+      return decodeURIComponent(results[2].replace(/\+/g, " "));
+  }
+
+  function makeid() {
+    var text = "";
+    var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+    for (var i = 0; i < 5; i++)
+      text += possible.charAt(Math.floor(Math.random() * possible.length)) + Date.now();
+    return text;
   }
 
   function assignFunc() {
@@ -213,7 +299,7 @@ app.controller('control', function($scope){
   
   $scope.return = function(){
     $scope.users.complete = false;
-    localStorage.removeItem('secretsanta');
+    document.location = 'index.html';
   }
 });
 </script>
