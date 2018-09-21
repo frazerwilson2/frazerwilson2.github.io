@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>TEAM</title>
+
+    <style>
+    * {
+        font-family: Arial, Helvetica, sans-serif;
+    }
+    body {
+        background: #f9f9f9;
+    }
+    .center {
+        text-align: center;
+    }
+    .grid {
+        display: grid;
+        grid-gap: 5px;
+    }
+    .row {
+        display: grid;
+        grid-gap: 5px;
+        grid-template-columns: 2fr repeat(5, 1fr) 20px;
+    }
+
+    .active {
+        background: #66b744;
+    }
+    .active:before {content: 'IN';display: block;text-align: center;margin: 5px;}
+    .home {
+        background: #ffd400;
+    }
+    .home:before {content: 'WFH';display: block;text-align: center;margin: 5px;}
+    .off {
+        background: #841d1d;
+    }
+    .off:before {content: 'AWAY';display: block;text-align: center;margin: 5px;color: white;}
+
+    input {
+        width: 100%;
+        border: none;
+        font-size: 20px;
+    }
+    button {
+        min-width: 20px;
+        text-align: center;
+    }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <div class="grid">
+            <div class="row">
+                <div>Name</div>
+                <div class="center">M</div>
+                <div class="center">T</div>
+                <div class="center">W</div>
+                <div class="center">T</div>
+                <div class="center">F</div>
+            </div>
+            <div class="row" v-for="(member, i) in team">
+                <div><input v-model="member.name" /></div>
+                <div v-bind:class="{ active: member.mon == 0, home: member.mon == 1, off: member.mon == 2 }" @click="changeVal(i, 'mon')"></div>
+                <div v-bind:class="{ active: member.tue == 0, home: member.tue == 1, off: member.tue == 2 }" @click="changeVal(i, 'tue')"></div>
+                <div v-bind:class="{ active: member.wed == 0, home: member.wed == 1, off: member.wed == 2 }" @click="changeVal(i, 'wed')"></div>
+                <div v-bind:class="{ active: member.thu == 0, home: member.thu == 1, off: member.thu == 2 }" @click="changeVal(i, 'thu')"></div>
+                <div v-bind:class="{ active: member.fri == 0, home: member.fri == 1, off: member.fri == 2 }" @click="changeVal(i, 'fri')"></div>
+                <button @click="remove(i)">X</button>
+            </div>
+        </div>
+        <hr>
+        <button id="newOne" @click="add">+</button>
+        <button @click="save">Save</button>
+        <button @click="load">Load</button>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script>
+    const app = new Vue({
+        el: '#app',
+        data() {
+            return {
+                team: [
+                    {name: 'test', mon: 0, tue: 0, wed: 0, thu: 0, fri: 0}
+                ]
+            }
+        },
+        created(){
+            this.load(this);
+        },
+        methods: {
+            add: ()=>{
+                const newMember = {name: '', mon: 0, tue: 0, wed: 0, thu: 0, fri: 0};
+                app.team.push(newMember);
+            },
+            changeVal: (i, val)=>{
+                app.team[i][val] += 1;
+                if(app.team[i][val] == 3){
+                    app.team[i][val] = 0;
+                }
+            },
+            remove: i => {
+                app.team.splice(i, 1);
+            },
+            save: ()=>{
+                console.log(JSON.stringify(app.team));
+                window.localStorage.setItem('teamData', JSON.stringify(app.team));
+            },
+            load: (app)=>{
+            const data = window.localStorage.getItem('teamData');
+                if(data){
+                    app.team = JSON.parse(data);
+                }
+            }
+        }
+    })
+    </script>
+</body>
+</html>
