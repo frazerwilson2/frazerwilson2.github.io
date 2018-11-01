@@ -48,6 +48,38 @@
         min-width: 20px;
         text-align: center;
     }
+
+
+    /* relesaes */
+    .releases {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .release {
+        min-height: 150px;
+        background: lightcoral;
+        padding: 10px 20px;
+        margin: 10px;
+        box-sizing: border-box;
+    }
+    .release.current {
+        background: lightBlue;
+    }
+
+    .release-kill {
+        float: right;
+        background: transparent;
+        border: 1px black solid;
+        border-radius: 10px;
+        padding: 5px;
+        margin: 0 0 5px;
+    }
+
+    .release input {
+        background: transparent;
+        width: auto;
+    }
     </style>
 </head>
 <body>
@@ -77,8 +109,79 @@
         <button @click="load">Load</button>
     </div>
 
+    <div id="releases">
+        <div class="releases">
+            <div>
+                <h2>Roomgo</h2>
+                <div v-for="(release, i) in rgReleases" class="release" v-bind:class="{ current: release.current }">
+                    <button class="release-kill" @click="removeRelease('rgReleases', i)">X</button>
+                    <h3><input v-model="release.name" /></h3>
+                    <input v-model="release.details" /><br>
+                    <input type="checkbox" v-model="release.current">
+                </div>
+                <button @click="addRelease('rgReleases')">+</button>
+            </div>
+
+            <div>
+                <h2>ERM</h2>
+                <div v-for="(release, i) in ermReleases" class="release" v-bind:class="{ current: release.current }">
+                    <button class="release-kill" @click="removeRelease('ermReleases', i)">X</button>
+                    <h3><input v-model="release.name" /></h3>
+                    <input v-model="release.details" /><br>
+                    <input type="checkbox" v-model="release.current">
+                </div>
+                <button @click="addRelease('ermReleases')">+</button>
+            </div>
+        </div>
+        <hr>
+        <button @click="save">Save</button>
+        <button @click="load">Load</button>
+    </div>
+
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
     <script>
+    const releases = new Vue({
+        el: '#releases',
+        data(){
+            return {
+                rgReleases: [
+                ],
+                ermReleases: [
+                ]
+            }
+        },
+        created(){
+            // console.log(this);
+            // this.load(this);
+        },
+        methods: {
+            removeRelease: (type, i) => {
+                releases[type].splice(i, 1);
+            },
+            addDetail: (type, i) =>{
+                releases[type][i].details.push('');
+            },
+            addRelease: type=>{
+                const newRelease = {name: '2.??.0', current: false, details: ''};
+                releases[type].push(newRelease);
+            },
+            load: (app)=>{
+            const rgData = window.localStorage.getItem('releaseDataRG');
+                if(rgData){
+                    releases.rgReleases = JSON.parse(rgData);
+                }
+            const ermData = window.localStorage.getItem('releaseDataERM');
+                if(ermData){
+                    releases.ermReleases = JSON.parse(ermData);
+                }
+            },
+            save: ()=>{
+                window.localStorage.setItem('releaseDataRG', JSON.stringify(releases.rgReleases));
+                window.localStorage.setItem('releaseDataERM', JSON.stringify(releases.ermReleases));
+            }
+        }
+    });
+
     const app = new Vue({
         el: '#app',
         data() {
