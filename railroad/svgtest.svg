@@ -1,0 +1,84 @@
+<svg style="height: 400px;" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <svg width="62" height="61" viewBox="0 0 62 61" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <rect width="61" height="61" fill="white" fill-opacity="0.5"/>
+        <path d="M23.5 1.5C23.5 1.5 22.5 28.5 28 34C33.5 39.5 61 37.5 61 37.5" stroke="black"/>
+        <path d="M36.5 1.5C36.5 1.5 35.5833 19 38.5 22.5C41.4167 26 61 24.5 61 24.5" stroke="black"/>
+        <line x1="30.5" y1="8" x2="30.5" y2="2" stroke="black"/>
+        <line x1="30.5" y1="17" x2="30.5" y2="11" stroke="black"/>
+        <line x1="31.6467" y1="25.044" x2="31.0876" y2="20.0803" stroke="black"/>
+        <line x1="35.6232" y1="31.3286" x2="32.7253" y2="28.0051" stroke="black"/>
+        <line x1="42.7558" y1="30.8383" x2="38.3464" y2="30.8383" stroke="black"/>
+        <line x1="52" y1="30.5" x2="46" y2="30.5" stroke="black"/>
+        <line x1="60" y1="30.5" x2="54" y2="30.5" stroke="black"/>
+    </svg>
+    <svg y="62" width="61" height="61" viewBox="0 0 61 61" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <rect width="61" height="61" fill="white" fill-opacity="0.5"/>
+        <line x1="4.37114e-08" y1="36.5" x2="61" y2="36.5" stroke="black"/>
+        <line x1="4.37114e-08" y1="23.5" x2="61" y2="23.5" stroke="black"/>
+        <line x1="12" y1="30.5" x2="6" y2="30.5" stroke="black"/>
+        <line x1="21" y1="30.5" x2="15" y2="30.5" stroke="black"/>
+        <line x1="30" y1="30.5" x2="24" y2="30.5" stroke="black"/>
+        <line x1="39" y1="30.5" x2="33" y2="30.5" stroke="black"/>
+        <line x1="48" y1="30.5" x2="42" y2="30.5" stroke="black"/>
+        <line x1="57" y1="30.5" x2="51" y2="30.5" stroke="black"/>
+    </svg>
+    <svg y="124" width="62" height="62" viewBox="0 0 62 62" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <rect x="62" width="61" height="61" transform="rotate(90 62 0)" fill="white" fill-opacity="0.5"/>
+        <path d="M60.5 36.5C60.5 36.5 43 35.5833 39.5 38.5C36 41.4167 37.5 61 37.5 61" stroke="black"/>
+        <path d="M1.36533 36.5C1.36533 36.5 18.8653 35.5833 22.3653 38.5C25.8653 41.4167 24.3653 61 24.3653 61" stroke="black"/>
+        <line x1="54" y1="30.5" x2="60" y2="30.5" stroke="black"/>
+        <line x1="45" y1="30.5" x2="51" y2="30.5" stroke="black"/>
+        <line x1="36" y1="30.5" x2="42" y2="30.5" stroke="black"/>
+        <line x1="27" y1="30.5" x2="33" y2="30.5" stroke="black"/>
+        <line x1="18" y1="30.5" x2="24" y2="30.5" stroke="black"/>
+        <line x1="8" y1="30.5" x2="14" y2="30.5" stroke="black"/>
+        <line x1="31.1617" y1="39.7558" x2="31.1617" y2="35.3464" stroke="black"/>
+        <line x1="31.5" y1="50" x2="31.5" y2="44" stroke="black"/>
+        <line x1="31.5" y1="60" x2="31.5" y2="54" stroke="black"/>
+        <line x1="2" y1="23.5" x2="61" y2="23.5" stroke="black"/>
+    </svg>
+    <svg y="186" width="61" height="61" viewBox="0 0 61 61" fill="none" xmlns="http://www.w3.org/2000/svg">
+<rect x="61" y="61" width="61" height="61" transform="rotate(-180 61 61)" fill="white" fill-opacity="0.5"/>
+<line x1="61" y1="30.5" x2="3.72727e-06" y2="30.5" stroke="black"/>
+<line x1="30.5" y1="30" x2="30.5" y2="-2.18557e-08" stroke="black"/>
+<line x1="55.5" y1="37" x2="55.5" y2="25" stroke="black"/>
+<line x1="24" y1="20.5" x2="37" y2="20.5" stroke="black"/>
+<line x1="24" y1="14.5" x2="37" y2="14.5" stroke="black"/>
+<line x1="24" y1="8.5" x2="37" y2="8.5" stroke="black"/>
+<line x1="6.5" y1="37" x2="6.5" y2="25" stroke="black"/>
+<line x1="13.5" y1="37" x2="13.5" y2="25" stroke="black"/>
+<line x1="19.5" y1="37" x2="19.5" y2="25" stroke="black"/>
+<line x1="25.6464" y1="35.6464" x2="35.8891" y2="25.4038" stroke="black"/>
+<line x1="35.8891" y1="36.3536" x2="25.6465" y2="26.1109" stroke="black"/>
+<line x1="41.5" y1="37" x2="41.5" y2="25" stroke="black"/>
+<line x1="48.5" y1="37" x2="48.5" y2="25" stroke="black"/>
+</svg>
+<svg y="248" width="61" height="61" viewBox="0 0 61 61" fill="none" xmlns="http://www.w3.org/2000/svg">
+<rect width="61" height="61" fill="white" fill-opacity="0.5"/>
+<line x1="4.37114e-08" y1="30.5" x2="61" y2="30.5" stroke="black"/>
+<line x1="30.5" y1="31" x2="30.5" y2="61" stroke="black"/>
+<line x1="5.5" y1="24" x2="5.5" y2="36" stroke="black"/>
+<line x1="37" y1="40.5" x2="24" y2="40.5" stroke="black"/>
+<line x1="37" y1="46.5" x2="24" y2="46.5" stroke="black"/>
+<line x1="37" y1="52.5" x2="24" y2="52.5" stroke="black"/>
+<line x1="54.5" y1="24" x2="54.5" y2="36" stroke="black"/>
+<line x1="47.5" y1="24" x2="47.5" y2="36" stroke="black"/>
+<line x1="41.5" y1="24" x2="41.5" y2="36" stroke="black"/>
+<line x1="35.3536" y1="25.3536" x2="25.1109" y2="35.5962" stroke="black"/>
+<line x1="25.1109" y1="24.6464" x2="35.3536" y2="34.8891" stroke="black"/>
+<line x1="19.5" y1="24" x2="19.5" y2="36" stroke="black"/>
+<line x1="12.5" y1="24" x2="12.5" y2="36" stroke="black"/>
+</svg>
+<svg y="310" width="62" height="62" viewBox="0 0 62 62" fill="none" xmlns="http://www.w3.org/2000/svg">
+<rect x="1" y="62" width="61" height="61" transform="rotate(-90 1 62)" fill="white" fill-opacity="0.5"/>
+<path d="M1 31.5C13.651 31.5977 24.5 32.3427 28 27.5C32.468 22.7966 31.6217 12.2602 31.5 1.00003" stroke="black"/>
+<line x1="8.5" y1="25" x2="8.5" y2="37" stroke="black"/>
+<line x1="25" y1="8.5" x2="37" y2="8.5" stroke="black"/>
+<line x1="25" y1="14.5" x2="37" y2="14.5" stroke="black"/>
+<line x1="24" y1="20.5" x2="36" y2="20.5" stroke="black"/>
+<line x1="23.1156" y1="23.9399" x2="31.3632" y2="32.6564" stroke="black"/>
+<line x1="20.1428" y1="25.435" x2="22.4256" y2="37.2159" stroke="black"/>
+<line x1="14.3953" y1="24.9961" x2="14.5" y2="36.9956" stroke="black"/>
+</svg>
+
+</svg>
