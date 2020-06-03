@@ -1,5 +1,5 @@
 <svg style="height: 3000px;" fill="none" xmlns="http://www.w3.org/2000/svg"><svg y="0" width="61" height="61" viewBox="0 0 61 61" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <rect x="61" width="61" height="61" transform="rotate(90 61 0)" fill="white" fill-opacity="0.5"/>
+            <rect x="61" width="61" height="61" transform="rotate(90 61 0)" fill="transparent"/>
             <line x1="30.5" y1="6.55671e-08" x2="30.5" y2="61" stroke="black"/>
             <line x1="37" y1="7.5" x2="25" y2="7.5" stroke="black"/>
             <line x1="37" y1="55.5" x2="25" y2="55.5" stroke="black"/>
@@ -9,7 +9,7 @@
             <line x1="37" y1="23.5" x2="25" y2="23.5" stroke="black"/>
             <line x1="37" y1="15.5" x2="25" y2="15.5" stroke="black"/>
             </svg>,<svg y="62" width="61" height="61" viewBox="0 0 61 61" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <rect width="61" height="61" fill="white" fill-opacity="0.5"/>
+            <rect width="61" height="61" fill="transparent"/>
             <line x1="4.37114e-08" y1="36.5" x2="61" y2="36.5" stroke="black"/>
             <line x1="4.37114e-08" y1="23.5" x2="61" y2="23.5" stroke="black"/>
             <line x1="12" y1="30.5" x2="6" y2="30.5" stroke="black"/>
@@ -19,7 +19,7 @@
             <line x1="48" y1="30.5" x2="42" y2="30.5" stroke="black"/>
             <line x1="57" y1="30.5" x2="51" y2="30.5" stroke="black"/>
             </svg>,<svg y="124" width="62" height="61" viewBox="0 0 62 61" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <rect width="61" height="61" fill="white" fill-opacity="0.5"/>
+            <rect width="61" height="61" fill="transparent"/>
             <path d="M23.5 1.5C23.5 1.5 22.5 28.5 28 34C33.5 39.5 61 37.5 61 37.5" stroke="black"/>
             <path d="M36.5 1.5C36.5 1.5 35.5833 19 38.5 22.5C41.4167 26 61 24.5 61 24.5" stroke="black"/>
             <line x1="30.5" y1="8" x2="30.5" y2="2" stroke="black"/>
@@ -30,7 +30,7 @@
             <line x1="52" y1="30.5" x2="46" y2="30.5" stroke="black"/>
             <line x1="60" y1="30.5" x2="54" y2="30.5" stroke="black"/>
             </svg>,<svg y="186" width="61" height="61" viewBox="0 0 61 61" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <rect width="61" height="61" fill="white" fill-opacity="0.5"/>
+            <rect width="61" height="61" fill="transparent"/>
             <line x1="4.37114e-08" y1="30.5" x2="61" y2="30.5" stroke="black"/>
             <line x1="7.5" y1="24" x2="7.5" y2="36" stroke="black"/>
             <line x1="55.5" y1="24" x2="55.5" y2="36" stroke="black"/>
@@ -40,7 +40,7 @@
             <line x1="23.5" y1="24" x2="23.5" y2="36" stroke="black"/>
             <line x1="15.5" y1="24" x2="15.5" y2="36" stroke="black"/>
             </svg>,<svg y="248" width="61" height="61" viewBox="0 0 61 61" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <rect width="61" height="61" fill="white" fill-opacity="0.5"/>
+            <rect width="61" height="61" fill="transparent"/>
             <line x1="4.37114e-08" y1="36.5" x2="61" y2="36.5" stroke="black"/>
             <line x1="4.37114e-08" y1="23.5" x2="61" y2="23.5" stroke="black"/>
             <line x1="12" y1="30.5" x2="6" y2="30.5" stroke="black"/>
@@ -50,7 +50,7 @@
             <line x1="48" y1="30.5" x2="42" y2="30.5" stroke="black"/>
             <line x1="57" y1="30.5" x2="51" y2="30.5" stroke="black"/>
             </svg>,<svg y="310" width="61" height="61" viewBox="0 0 61 61" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <rect y="61" width="61" height="61" transform="rotate(-90 0 61)" fill="white" fill-opacity="0.5"/>
+            <rect y="61" width="61" height="61" transform="rotate(-90 0 61)" fill="transparent"/>
             <line x1="36.5" y1="22" x2="36.5" y2="-9.47583e-07" stroke="black"/>
             <line x1="23.5" y1="22" x2="23.5" y2="6.09093e-09" stroke="black"/>
             <line x1="30.5" y1="13" x2="30.5" y2="19" stroke="black"/>
@@ -61,7 +61,7 @@
             <line x1="36" y1="41.5" x2="24" y2="41.5" stroke="black"/>
             <rect x="21" y="39" width="17" height="18" transform="rotate(-90 21 39)" fill="black"/>
             </svg>,<svg y="372" width="61" height="61" viewBox="0 0 61 61" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <rect width="61" height="61" fill="white" fill-opacity="0.5"/>
+            <rect width="61" height="61" fill="transparent"/>
             <line x1="4.37114e-08" y1="36.5" x2="61" y2="36.5" stroke="black"/>
             <line x1="4.37114e-08" y1="23.5" x2="61" y2="23.5" stroke="black"/>
             <line x1="12" y1="30.5" x2="6" y2="30.5" stroke="black"/>
@@ -71,7 +71,7 @@
             <line x1="48" y1="30.5" x2="42" y2="30.5" stroke="black"/>
             <line x1="57" y1="30.5" x2="51" y2="30.5" stroke="black"/>
             </svg>,<svg y="434" width="61" height="61" viewBox="0 0 61 61" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <rect width="61" height="61" fill="white" fill-opacity="0.5"/>
+            <rect width="61" height="61" fill="transparent"/>
             <line x1="4.37114e-08" y1="36.5" x2="61" y2="36.5" stroke="black"/>
             <line x1="4.37114e-08" y1="23.5" x2="61" y2="23.5" stroke="black"/>
             <line x1="12" y1="30.5" x2="6" y2="30.5" stroke="black"/>
@@ -81,7 +81,7 @@
             <line x1="48" y1="30.5" x2="42" y2="30.5" stroke="black"/>
             <line x1="57" y1="30.5" x2="51" y2="30.5" stroke="black"/>
             </svg>,<svg y="496" width="61" height="61" viewBox="0 0 61 61" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <rect x="61" width="61" height="61" transform="rotate(90 61 0)" fill="white" fill-opacity="0.5"/>
+            <rect x="61" width="61" height="61" transform="rotate(90 61 0)" fill="transparent"/>
             <line x1="30.5" y1="6.55671e-08" x2="30.5" y2="61" stroke="black"/>
             <line x1="37" y1="7.5" x2="25" y2="7.5" stroke="black"/>
             <line x1="37" y1="55.5" x2="25" y2="55.5" stroke="black"/>
@@ -91,7 +91,7 @@
             <line x1="37" y1="23.5" x2="25" y2="23.5" stroke="black"/>
             <line x1="37" y1="15.5" x2="25" y2="15.5" stroke="black"/>
             </svg>,<svg y="558" width="61" height="61" viewBox="0 0 61 61" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <rect width="61" height="61" fill="white" fill-opacity="0.5"/>
+            <rect width="61" height="61" fill="transparent"/>
             <line x1="4.37114e-08" y1="30.5" x2="61" y2="30.5" stroke="black"/>
             <line x1="7.5" y1="24" x2="7.5" y2="36" stroke="black"/>
             <line x1="55.5" y1="24" x2="55.5" y2="36" stroke="black"/>
@@ -101,7 +101,7 @@
             <line x1="23.5" y1="24" x2="23.5" y2="36" stroke="black"/>
             <line x1="15.5" y1="24" x2="15.5" y2="36" stroke="black"/>
             </svg>,<svg y="620" width="62" height="62" viewBox="0 0 62 62" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <rect x="61" width="61" height="61" transform="rotate(90 61 0)" fill="white" fill-opacity="0.5"/>
+            <rect x="61" width="61" height="61" transform="rotate(90 61 0)" fill="transparent"/>
             <path d="M61 30.5C48.349 30.4023 37.5 29.6573 34 34.5C29.532 39.2034 30.3783 49.7398 30.5 61" stroke="black"/>
             <line x1="53.5" y1="37" x2="53.5" y2="25" stroke="black"/>
             <line x1="37" y1="53.5" x2="25" y2="53.5" stroke="black"/>
