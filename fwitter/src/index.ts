@@ -32,13 +32,31 @@ export default {
     const params = new URL(request.url).pathname.split("/");
 
     if (params[1] === "post") {
-      const post = await queryPost(params[2]);
-      if (post) {
-        return new Response(renderPost({ post }), opts);
+      try {
+        const post = await queryPost(params[2]);
+        if (post) {
+          return new Response(renderPost({ post }), opts);
+        }
+      } catch (e) {
+        return new Response("Post Not found", { status: 404 });
       }
     }
 
-    const posts = await queryPosts();
-    return new Response(renderIndex({ posts }), opts);
+    if (params[1] === "page") {
+      const perPage = 10;
+      const page = parseInt(params[2]);
+      const { posts, total } = await queryPosts(page, perPage);
+      const hasNextPage = total > page * perPage;
+      return new Response(
+        renderIndex({ posts, total, page: parseInt(params[2]), hasNextPage }),
+        opts
+      );
+    }
+
+    const { posts, total } = await queryPosts();
+    return new Response(
+      renderIndex({ posts, total, page: 1, hasNextPage: true }),
+      opts
+    );
   },
 };
