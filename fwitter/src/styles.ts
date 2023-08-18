@@ -43,4 +43,18 @@ export default `
   .more {
     text-align: right;
   }
+  .post a {
+    display: flex;
+    text-decoration: none;
+  }
+  .post a h2 {
+    text-decoration: underline;
+  }
+  .post a::after {
+    content: '>';
+    align-self: end;
+    flex: 1;
+    text-align: right;
+    font-size: 2rem;
+  }
 `;
