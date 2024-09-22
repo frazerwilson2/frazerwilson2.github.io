@@ -8,7 +8,7 @@ export default function renderIndex({ post }: { post: RenderedPost }) {
         <h1>${post.content.title}</h1>
         ${
           post.content.image &&
-          `<img src="${post.content.image}" alt="${post.content.title}" />`
+          `<img height="250" src="${post.content.image}" alt="${post.content.title}" />`
         }
         ${post.html}
     `,

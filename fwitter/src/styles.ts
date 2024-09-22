@@ -1,20 +1,22 @@
 export default `
   :root {
-      --primary: #9b1357;
+      --primary: #db5296;
   }
   body {
-    background: #f7f7f7;
+    background: #fafafa;
     font-family: 'georgia', serif;
     color: #333;
     font-size: 18px;
   }
   .container {
     margin: 0 auto;
-    max-width: 80vw;
+    max-width: 700px;
     line-height: 1.6;
+    display: grid;
   }
   img {
     max-width: 100%;
+    margin: 0 auto;
   }
   .posts {
     list-style: none;
@@ -48,6 +50,9 @@ export default `
     text-decoration: none;
   }
   .post a h2 {
+    text-decoration: none;
+  }
+  .post a h2:hover {
     text-decoration: underline;
   }
   .post a::after {
