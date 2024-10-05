@@ -1,6 +1,15 @@
 import { layout } from "./layout";
 import { Post } from "./types";
 
+export const formatDate = (d:string) => {
+  const date = new Date(d);
+  const day = date.getDate();
+  const month = date.getMonth() + 1;
+  const year = date.getFullYear();
+  const published = `${day}/${month}/${year}`;
+  return published;
+}
+
 export default function renderIndex({
   posts,
   total,
@@ -16,32 +25,30 @@ export default function renderIndex({
   <ul class="posts">
     ${posts
       .map((post) => {
-        const date = new Date(post.published_at);
-        const day = date.getDate();
-        const month = date.getMonth() + 1;
-        const year = date.getFullYear();
-        const published = `${day}/${month}/${year}`;
+        const published = formatDate(post.published_at);
         return `
             <li class="post">
                 ${
                   post.content.title
                     ? `<a href="/post/${post.slug}"><h2>${post.name}</h2></a>`
-                    : `<h2>${post.name}</h2>`
+                    : `<h2 class="statement">${post.name}</h2>`
                 }
                 <span class="published">${published}</span>
             </li>`;
       })
       .join("")}
   </ul>
+  <div class="prev-more">
     ${
       page > 1
-        ? `<a href="${page === 2 ? `/` : `/page/${page - 1}`}"><< Previous</a>`
+        ? `<a class="" href="${page === 2 ? `/` : `/page/${page - 1}`}"><h2>Previous</h2></a>`
         : ""
     }
     ${
       hasNextPage
-        ? `<div class="more"><a href="/page/${page + 1}">More >></a></div>`
+        ? `<div class=""><a href="/page/${page + 1}"><h2>Next</h2></a></div>`
         : ""
     }
+  </div>
   `);
 }
