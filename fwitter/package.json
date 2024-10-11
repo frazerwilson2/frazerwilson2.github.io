@@ -3,18 +3,21 @@
   "version": "0.0.0",
   "devDependencies": {
     "@cloudflare/workers-types": "^4.20230807.0",
+    "@types/node": "^22.7.4",
     "typescript": "^5.1.6",
     "vitest": "^0.34.1",
     "wrangler": "^3.5.0"
   },
   "private": true,
   "scripts": {
-    "start": "wrangler dev",
+    "start": "wrangler dev --node-compat",
     "deploy": "wrangler deploy",
     "test": "vitest"
   },
   "dependencies": {
+    "http": "^0.0.1-security",
     "storyblok-js-client": "^5.14.1",
-    "storyblok-rich-text-react-renderer": "^2.9.0"
+    "storyblok-rich-text-react-renderer": "^2.9.0",
+    "strava-v3": "^2.2.1"
   }
 }

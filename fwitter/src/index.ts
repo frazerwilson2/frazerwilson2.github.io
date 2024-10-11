@@ -2,6 +2,7 @@ import queryPosts from "./queryPosts";
 import queryPost from "./queryPost";
 import renderIndex from "./renderIndex";
 import renderPost from "./renderpost";
+import { writeFile, writeFileSync } from "node:fs";
 
 export interface Env {
   // Example binding to KV. Learn more at https://developers.cloudflare.com/workers/runtime-apis/kv/
@@ -28,8 +29,19 @@ export default {
     request: Request,
     env: Env,
     ctx: ExecutionContext
-  ): Promise<Response> {
+  ): Promise<Response|string> {
+
+
     const params = new URL(request.url).pathname.split("/");
+
+    if (params[1] === "battlebus") {
+      console.log(await request.json());
+      
+      return new Response(
+        'All aboard the battle bus',
+        opts
+      );
+    }
 
     if (params[1] === "post") {
       try {
