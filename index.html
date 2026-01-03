@@ -1,5 +1,7 @@
 <html>
   <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PAGE</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -14,8 +16,12 @@
         }
         .posts {
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
             gap: 7px;
+        }
+        @media (min-width: 768px) {
+            .posts {
+              grid-template-columns: repeat(3, 1fr);
+            }
         }
         .posts article {
             border: 5px dashed black;
@@ -31,6 +37,16 @@
         .post-content {
           max-width: 800px;
           margin: 0 2vw;
+        }
+        h2, h3 {
+          font-size: 2rem;
+        }
+        pre {
+          font-size: 2rem;
+          white-space: break-spaces;
+        }
+        p {
+          line-height: 1.6;
         }
     </style>
 </head>
@@ -65,9 +81,20 @@
 const options = {
   renderMark: {
     ['bold']: (text) => `<strong>${text}</strong>`,
+    ['code']: (text) => {
+      const esc = String(text)
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;')
+        .replace(/'/g, '&#39;');
+      return `<pre>${esc}</pre>`;
+    },
   },
   renderNode: {
     ['paragraph']: (node, next) =>
+      `<p>${next(node.content)}</p>`,
+    ['text']: (node, next) =>
       `<p>${next(node.content)}</p>`,
     ['embedded-asset-block']: (node) => {
         loadInImg(node.data.target.sys.id);
@@ -82,6 +109,8 @@ const options = {
             .then(data => {
                 console.log(data);
                 const title = data.fields.title || 'No Title';
+                console.log(data.fields.content);
+                
                 const body = documentToHtmlString(data.fields.content, options) || 'No Content';
                 document.getElementById('post-content').innerHTML = `<h2>${title}</h2>${body}`;
                 window.location.hash = `#${id}`;
