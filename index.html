@@ -9,14 +9,23 @@
     <link rel="stylesheet" href="assets/styles.css">
 </head>
   <body>
-    <header>I am the header section</header>
+    <header>
+      <div class="header-inner">
+        <div class="site-title">/* Commented out */</div>
+        <p>Just another learning log<span class="blink">_</span></p>
+      </div>
+    </header>
     <main>
       <section id="posts" class="posts"></section>
       <section id="post-content" class="post-content hidden">
         <button id="back-to-posts" class="back-to-posts" aria-label="Back to posts">← Back</button>
         <div id="post-inner-content"></div>
       </section>
-      <aside>sidebar</aside>
+      <aside>
+        <div class="quotation">
+          <em>As Benjamin Franklin once said: ‘You have reached the end of your free trial membership at benjaminfranklinquotes.com.’</em>
+        </div>
+      </aside>
     </main>
     <footer>I am the footer section</footer>
     <script
